@@ -1,0 +1,27 @@
+adjacency list:
+list of nodes its connected to 
+
+bidirectional vs undirected - the same, undirected is not possible
+
+pick vertex to start with
+
+depth first traversal - calculate minimum spanning tree - minimal vertexes to connect all
+
+-have to keep track of where visited so you don't double up
+
+-add node to stack, look for children, add to stack
+
+-for each edge in edges
+
+-visted, add children to stack
+
+breadth first traversal - shortest path from one node to all other nodes to find 1 shortest path
+breadth first search - shortest path from one node to other
+ 
+-make a list of what was visited
+
+-enqueue neighbors [node, visited], [node, visited]
+
+-enqueue path to the neighbors [node, visited, neighbors], [node, visited, neighbors]
+
+- get shortest list

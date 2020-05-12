@@ -1,3 +1,4 @@
+
 """
 Simple graph implementation
 """
@@ -32,22 +33,51 @@ class Graph:
         Print each vertex in breadth-first order
         beginning from starting_vertex.
         """
-        pass  # TODO
+        # Breadth-First Traversal
+        # Add starting node to a queue
+        # While queue isn't empty:
+        queue = Queue()
+        queue.enqueue([starting_vertex])
+        visited = set()
+        while queue.size() > 0:
+        #     Dequeue the first vert
+            path = queue.dequeue()
+        #     If that vert isn't visited:
+            if path[-1] is not visited:
+        #         Mark as visited
+                visited.add(path[-1])
+        #         Add all its unvisited neighbors to the queue
+                for next_vert in self.get_neighbors(path[-1]):
+                    new_path = list(path)
+                    new_path.append(next_vert)
+                    queue.enqueue(new_path)
 
     def dft(self, starting_vertex):
         """
         Print each vertex in depth-first order
         beginning from starting_vertex.
         """
-        pass  # TODO
+        # Depth-First Traversal
+        stack = Stack()
+        # Add starting node to a stack
+        stack.push([starting_vertex])
+        visited = set()
+        # While stack isn't empty:
+        while stack[0] is not visited:
+        #     Pop the first vert
+            stack.pop(stack[0])
+        #     If that vert isn't visited:
+        #         Mark as visited
+        #         Push all its unvisited neighbors to the stack
+
 
     def dft_recursive(self, starting_vertex):
         """
         Print each vertex in depth-first order
         beginning from starting_vertex.
-
         This should be done using recursion.
         """
+        # put in list and recurse
         pass  # TODO
 
     def bfs(self, starting_vertex, destination_vertex):
@@ -66,12 +96,11 @@ class Graph:
         """
         pass  # TODO
 
-    def dfs_recursive(self, starting_vertex):
+    def dfs_recursive(self, starting_vertex, destination_vertex):
         """
         Return a list containing a path from
         starting_vertex to destination_vertex in
         depth-first order.
-
         This should be done using recursion.
         """
         pass  # TODO

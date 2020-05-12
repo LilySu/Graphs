@@ -2,7 +2,9 @@
 # Note: This Queue class is sub-optimal. Why?
 class Queue():
     def __init__(self):
-        self.queue = []
+        self.queue = [] 
+        # runtime complexity of adding to end of list: O(1), to front O(n), 
+        # for small numbers of n simplicity, doesn't matter
     def enqueue(self, value):
         self.queue.append(value)
     def dequeue(self):
