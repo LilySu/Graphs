@@ -70,3 +70,41 @@
 #     print(node)
 #     for n in node.neighbors:
 #         explore(n)
+
+# a = []
+# def listsum(n):
+#     if len(n) == 1:
+#         return n[0]
+#     else:
+#         for item in n[1:]:
+#             if type(item) == list:
+#                 sublist_sum = sum(item)
+#             else: 
+#                 sublist_sum = item
+#             a.append(sublist_sum)
+#         return n[0] + sum(a)
+
+# # non-recursive
+# def list_sum(n):
+#     new_list = []
+#     for i in n:
+#         if type(i) == list:
+#             i = sum(i)
+#         new_list.append(i)
+#     return sum(new_list)
+
+# recursive
+def list_sum(n):
+    total = 0
+    for i in n:
+        if type(i) == list:
+            total = total + list_sum(i)
+        else:
+            total = total + i
+    return total
+
+
+
+n = [1, 2, [3,4], [5,6]]
+
+print(list_sum(n))

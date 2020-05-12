@@ -65,10 +65,14 @@ class Graph:
         # While stack isn't empty:
         while stack[0] is not visited:
         #     Pop the first vert
-            stack.pop(stack[0])
+            path = stack.pop(stack[0])
         #     If that vert isn't visited:
+            if path not in visited:
         #         Mark as visited
+                visited.push(path)
         #         Push all its unvisited neighbors to the stack
+                for neighbor in self.get_neighbors(path):
+                    stack.push(neighbor)
 
 
     def dft_recursive(self, starting_vertex):
@@ -78,7 +82,22 @@ class Graph:
         This should be done using recursion.
         """
         # put in list and recurse
-        pass  # TODO
+        # Depth-First Traversal
+        stack = Stack()
+        # Add starting node to a stack
+        stack.push([starting_vertex])
+        visited = set()
+        # While stack isn't empty:
+        while stack[0] is not visited:
+        #     Pop the first vert
+            path = stack.pop(stack[0])
+        #     If that vert isn't visited:
+            if path not in visited:
+        #         Mark as visited
+                visited.push(path)
+        #         Push all its unvisited neighbors to the stack
+                for neighbor in self.get_neighbors(path):
+                    stack.push(neighbor)
 
     def bfs(self, starting_vertex, destination_vertex):
         """

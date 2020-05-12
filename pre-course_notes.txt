@@ -1,0 +1,35 @@
+dept first - good for 1 solution, uses stack, 
+might be faster if you need to get very far away from starting point
+topological sorting 
+exhaustive search
+deep into a path, explores all, then decides to go to another path
+O(vertices + edges)
+stack - if tree and balanced O^h - height of tree in stack, but if unbalanced O^v or number of nodes
+
+breadth first - is there a path? explore layer by layer
+
+explores the graph outward in rings of ever increasing distance from the starting vertex.
+route finding, path finding, social networking
+web crawlers, peer-to-peer networks like bittorrent
+cycle detection in graph
+
+
+
+dfs 
+create a stack - last in first outward
+a seen hash set to not repeat - a set of unique items
+add first node to start
+continue while stack is not empty
+pull from stack
+if have not been seen 
+mark as seen
+print it or do work with a function
+continue the search. 
+
+for each node adjacent,
+if have not been seen
+add node to our search and continue to search
+
+stack dept 
+queue breadth
+
