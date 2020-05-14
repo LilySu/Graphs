@@ -42,13 +42,14 @@ class Graph:
         while queue.size() > 0:
         #     Dequeue the first vert
             path = queue.dequeue()
+
         #     If that vert isn't visited:
             if path[-1] is not visited:
         #         Mark as visited
                 visited.add(path[-1])
         #         Add all its unvisited neighbors to the queue
                 for next_vert in self.get_neighbors(path[-1]):
-                    new_path = list(path)
+                    new_path = list(path) # make a copy
                     new_path.append(next_vert)
                     queue.enqueue(new_path)
 

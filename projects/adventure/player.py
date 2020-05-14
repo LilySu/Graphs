@@ -9,3 +9,9 @@ class Player:
                 next_room.print_room_description(self)
         else:
             print("You cannot move in that direction.")
+
+
+# just make the player traverse the entire thing
+# traversal comment out and put in your own repl
+
+# figure out how are you going to traverse it - bft, dft - bft best
