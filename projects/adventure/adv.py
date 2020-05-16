@@ -28,40 +28,41 @@ player = Player(world.starting_room)
 
 
 # Fill this out with directions to walk
-# traversal_path = ['n', 'n']
-traversal_path = []
+# traversal_path_dict = ['n', 'n']
+traversal_path_dict = []
 
 # because player moves in both drections n-s e-w  and room has two exits!
-reversed_path = []
+reversed_path_dict = []
 
 # You may find the commands `player.current_room.id`, - gettting ids of every room
 # `player.current_room.get_exits()` - gets all possible exits
 # and `player.travel(direction)` useful. - travels in that direction 
 
 
-path = {} # rooms 
-reverse = {'n' :'s', 's': 'n', 'e': 'w' ,'w' :'e'}
-path[0] = player.current_room.get_exits()
-complete_path = []
+path_dict = {} # rooms 
+path_dict[0] = player.current_room.get_exits()
+visitedRoute = []
 
-while len(path) < len(room_graph) -1:
+reverse = { 'e': 'w' ,'w' :'e','n' :'s', 's': 'n',}
 
-    if player.current_room.id not in path:
-        path[player.current_room.id] = player.current_room.get_exits()
-        previous_room = reversed_path[-1]
-        path[player.current_room.id].remove(previous_room)
+while len(path_dict) < len(room_graph) -1:
 
-    while len(path[player.current_room.id]) < 1:
-        visited = reversed_path.pop()
-        traversal_path.append(visited)
+    if player.current_room.id not in path_dict:
+        path_dict[player.current_room.id] = player.current_room.get_exits()
+        previous_room = reversed_path_dict[-1]
+        path_dict[player.current_room.id].remove(previous_room)
+
+    while len(path_dict[player.current_room.id]) < 1:
+        visited = reversed_path_dict.pop()
+        traversal_path_dict.append(visited)
         player.travel(visited)
-    exits = path[player.current_room.id].pop()
-    traversal_path.append(exits)
-    reversed_path.append(reverse[exits])
+    exits = path_dict[player.current_room.id].pop()
+    traversal_path_dict.append(exits)
+    reversed_path_dict.append(reverse[exits])
     player.travel(exits)
 
-if len(traversal_path)<9999:
-    for i in traversal_path:
+if len(traversal_path_dict)<2000:
+    for i in traversal_path_dict:
         print(f"walk {i} to get to next room") 
 
 # TRAVERSAL TEST
@@ -69,12 +70,12 @@ visited_rooms = set()
 player.current_room = world.starting_room
 visited_rooms.add(player.current_room)
 
-for move in traversal_path:
+for move in traversal_path_dict:
     player.travel(move)
     visited_rooms.add(player.current_room)
 
 if len(visited_rooms) == len(room_graph):
-    print(f"TESTS PASSED: {len(traversal_path)} moves, {len(visited_rooms)} rooms visited")
+    print(f"TESTS PASSED: {len(traversal_path_dict)} moves, {len(visited_rooms)} rooms visited")
 else:
     print("TESTS FAILED: INCOMPLETE TRAVERSAL")
     print(f"{len(room_graph) - len(visited_rooms)} unvisited rooms")
